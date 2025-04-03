@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Applications - HireHub</title>
+    
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <!-- icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    
+    <!-- css files -->
+    <link rel="stylesheet" href="/CSS/HRDashboard.css">
+    <link rel="stylesheet" href="/CSS/jobForm.css">
+    <link rel="stylesheet" href="/CSS/jobPost.css">
+    <link rel="stylesheet" href="/CSS/jobApplications.css">
+</head>
+<body>
+    <div class="grid-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-title">
+                <h2>Job Applications</h2>
+            </div>
+            <div class="header-right">
+                <button onclick="window.location.href='/hr/dashboard'" class="back-button">
+                    <span class="material-symbols-outlined">arrow_back</span> Back to Dashboard
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-container">
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Search applications by job title, applicant name, or status...">
+                    <span class="material-symbols-outlined">search</span>
+                </div>
+            </div>
+            <div id="applications-container">
+                <!-- Applications will be loaded here -->
+            </div>
+        </main>
+    </div>
+
+    <script src="/js/jobApplications.js"></script>
+</body>
+</html> 

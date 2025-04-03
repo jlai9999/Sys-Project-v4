@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Jobs - HireHub</title>
+    
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <!-- icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    
+    <!-- css files -->
+    <link rel="stylesheet" href="/CSS/HRDashboard.css">
+    <link rel="stylesheet" href="/CSS/jobForm.css">
+    <link rel="stylesheet" href="/CSS/jobPost.css">
+</head>
+<body>
+    <div class="grid-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-title">
+                <h2>HireHub Job Board</h2>
+            </div>
+            <div class="header-right">
+                <button onclick="window.location.href='/applicant/dashboard'" class="back-button">
+                    <span class="material-symbols-outlined">arrow_back</span> Back to Dashboard
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-container">
+            <!-- Search Bar -->
+            <div class="search-wrapper">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Search for jobs by title, category, or location...">
+                    <button onclick="handleSearch()" class="search-button">
+                        <span class="material-symbols-outlined">search</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Add this after the search box div -->
+            <div class="filters-wrapper">
+                <div class="filters-container">
+                    <div class="filter-group">
+                        <label for="jobCategory">Category:</label>
+                        <select id="jobCategory" name="jobCategory">
+                            <option value="">All Categories</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="location">Location:</label>
+                        <select id="location" name="location">
+                            <option value="">All Locations</option>
+                            <option value="Toronto">Toronto</option>
+                            <option value="Vancouver">Vancouver</option>
+                            <option value="Montreal">Montreal</option>
+                            <option value="Calgary">Calgary</option>
+                            <option value="Ottawa">Ottawa</option>
+                            <option value="Regina">Regina</option>
+                            <option value="Mississauga">Mississauga</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="salary-range">Salary Range:</label>
+                        <div class="salary-inputs">
+                            <input type="number" id="minSalary" placeholder="Min" min="0">
+                            <span>to</span>
+                            <input type="number" id="maxSalary" placeholder="Max" min="0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Job Posts Container -->
+            <div id="job-posts-container">
+                <!-- Job posts will be loaded here -->
+            </div>
+        </main>
+    </div>
+
+    <script src="/js/jobPost.js"></script>
+</body>
+</html> 

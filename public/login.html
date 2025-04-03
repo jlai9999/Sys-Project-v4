@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- basic setup stuff for the webpage -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - HireHub</title>
+
+    <!-- link to css file -->
+    <link rel="stylesheet" href="/CSS/login.css">
+</head>
+<body>
+    <!-- main login form container -->
+    <div class="login-container">
+        <h1>Welcome Back to<br>HireHub</h1>
+
+        <!-- form that collects user info -->
+        <form id="loginForm">
+            <label>Username:</label>
+            <select id="userType" name="userType" required>
+                <option value="">Select User Type</option>
+                <option value="applicant">Applicant</option>
+                <option value="hr">HR Staff</option>
+                <option value="admin">Admin</option>
+            </select>
+
+            <label>Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label>Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <div class="remember-me">
+                <input type="checkbox" id="remember" name="remember">
+                <label for="remember">Remember Me</label>
+            </div>
+
+            <button type="submit" class="button-style">Login</button>
+
+            <a href="/accountCreation.html" class="create-account">Create an Account</a>
+        </form>
+    </div>
+
+    <!-- code that makes the login work -->
+    <script>
+        // when someone clicks the login button
+        document.getElementById('loginForm').onsubmit = async function(e) {
+            // stop the form from refreshing the page
+            e.preventDefault();
+            
+            // get what the user typed in
+            const userType = document.getElementById('userType').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            try {
+                // send the login info to the server to check if it's correct
+                const response = await fetch(`/${userType}/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+
+                
+                if (response.ok) {
+                    // sends the user to their dashboard based on who they are
+                    switch(userType) {
+                        case 'applicant':
+                            window.location.href = '/applicant/dashboard';
+                            break;
+                        case 'hr':
+                            window.location.href = '/hr/dashboard';
+                            break;
+                        case 'admin':
+                            window.location.href = '/admin/dashboard';
+                            break;
+                    }
+                } else {
+                    // if the password or email was wrong
+                    alert('Invalid email or password!');
+                }
+            } catch (error) {
+                // if something went wrong with the server
+                alert('An error occurred during login. Please try again.');
+            }
+        };
+    </script>
+</body>
+</html> 
